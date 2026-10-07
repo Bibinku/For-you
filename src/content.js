@@ -20,12 +20,12 @@ export const opening = {
 
 export const chapters = {
   why: {
-    title: "NJN NTHINA ITH CREATE CHEYUNATHNU ARIYUO",
+    title: ["NJN NTHINA ITH CREATE", "CHEYUNATHNU ARIYUO ?"],
     lines: [
       "YOU KNOW!",
       "EVERY YEAR, OCT 09 ENIK VENDI IYAL MATTI VEKKAR UND!",
       "SO, THIS YEAR I'M PLANNING TO DEVELOP A PERSONAL SITE FOR YOU.",
-      "THAT'S WHY I'M HERE.",
+      "THAT'S WHY I'M HERE.👀",
     ],
   },
   friend: {
@@ -55,7 +55,7 @@ export const chapters = {
     ],
   },
   thanks: {
-    title: "THANKS ALOT KUTTU",
+    title: "THANKS A LOT KUTTU 💗 ",
     small: true,
     lines: [
       "I THINK ITH NAMMAL ORUMICH CELEBRATE CHEYUNNA 5TH BIRTHDAY AHNU",
@@ -68,18 +68,18 @@ export const chapters = {
       "",
       "ITHREM NAAL NTE KOODEY ORUMICH NINNATHINUM , SUPPORT CHEYTHATHINUM , VAZHAK PARANJATHINUM , NA BETTER AKKAN NOKIYATHINUM OKEHH",
       "",
-      "THANKSSSSSS KUTTEEE.",
+      "THANKSSSSSS KUTTEEE.🫶",
       "",
-      "LOVE YO DO",
-      "UMMMAAHHHHHHHHH",
+      "LOVE YO DO.💗 ",
+      "UMMMAAHHHHHHHHH.💋💋",
       "",
-      "NJN IYALDA KOODA EPPOLUM INDAVUM AND I LOVE YOU MOREEE EVERYDAY",
+      "NJN IYALDA KOODA EPPOLUM INDAVUM AND I LOVE YOU MOREEE EVERYDAY 🫶",
       "",
-      "MMMMMMMMMMM!",
+      "MMMMMMMMMMM!.😘",
     ],
   },
   wish: {
-    title: "WISH YOU ALL THE BEST",
+    title: "WISH YOU ALL THE BEST.🫶",
     small: true,
     lines: [
       "WISH YOU A ALL THE BEST FOR YOUR CARRIER",
@@ -99,10 +99,10 @@ export const chapters = {
       "ALL THE BEST FOR OUR FUTURE",
       "AND",
       "ADVANCE HAPPY BIRTHDAY TO MY KUTT",
-      "LOVE YOUUU DOOO",
-      "UMMMMMAAHHHHHHHHH",
+      "LOVE YOUUU DOOO.💗",
+      "UMMMMMAAHHHHHHHHH.💋💋",
     ],
   },
 };
 
-export const ending = { title: "THE END", lines: ["THANK YOU KUTTUUUUU", "MMMMMMMMMM!"] };
+export const ending = { title: "THANK YOU KUTTUUUUU.💗", lines: [ "MMMMMMMMMM!.💋💋"] };

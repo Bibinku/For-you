@@ -5,37 +5,62 @@ import { opening, chapters, photos, thanks, ending, video } from "../content.js"
 
 const step = 0.9; // seconds between lines
 
-/* 1 · Opening */
+/* 1 · Opening (video background) */
 export function Opening({ next }) {
   const ref = useRef(null);
-  useEffect(() => { const v = ref.current; if (v) { v.muted = true; v.play().catch(() => {}); } }, []);
+  useEffect(() => {
+    const v = ref.current;
+    if (v) { v.muted = true; v.play().catch(() => {}); }
+  }, []);
   return (
-    <section className="page center" onTouchStart={() => ref.current?.play().catch(() => {})}>
-      <video ref={ref} className="bgvideo" src={video.src} poster={video.poster} autoPlay muted loop playsInline preload="auto" disablePictureInPicture />
+    <section className="page hero" onTouchStart={() => ref.current?.play().catch(() => {})}>
+      <video
+        ref={ref}
+        className="bgvideo"
+        src={video.src}
+        poster={video.poster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        disablePictureInPicture
+      />
       <div className="veil" />
       <Words as="h1" className="display" text={opening.title} delay={0.8} />
-      {opening.lines.map((l, i) => <Words key={i} className="line accent" text={l} delay={2.2 + i * 1.2} />)}
+      {opening.lines.map((l, i) => (
+        <Words key={i} className="line" text={l} delay={2.2 + i * 1.2} />
+      ))}
       <Fade delay={5}><button className="btn" onClick={next}>Begin</button></Fade>
     </section>
   );
 }
 
-/* Generic chapter */
+/* Generic chapter (pages 2, 3, 4, 6) */
 export function Chapter({ id }) {
   const c = chapters[id];
   const st = c.small ? 0.3 : step;
   return (
     <section className="page scroll">
-      <Words as="h2" className="title" text={c.title} delay={0.2} />
+      <h2 className={`title ${c.cls || ""}`}>
+        {[].concat(c.title).map((t, i) => (
+          <Words key={i} as="span" className="tline" text={t} delay={0.2 + i * 0.3} />
+        ))}
+      </h2>
       <div className={`body ${c.small ? "sm" : ""}`}>
-        {c.lines.map((l, i) => l === "" ? <div key={i} className="gap" /> :
-          <Words key={i} className="line" text={l} delay={0.9 + i * st} />)}
+        {c.lines.map((l, i) =>
+          l === "" ? (
+            <div key={i} className="gap" />
+          ) : (
+            <Words key={i} className="line" text={l} delay={0.9 + i * st} />
+          )
+        )}
       </div>
     </section>
   );
 }
 
-/* 5 · Us — two silhouettes walking hand in hand under parallax layers */
+/* Us — two silhouettes walking hand in hand (not on a route now, kept for later) */
 export function Us() {
   const x = useMotionValue(0);
   const far = useTransform(x, [-1, 1], [-14, 14]);
@@ -64,7 +89,7 @@ export function Us() {
   );
 }
 
-/* 6 · Our photos — blurred depth backdrop, mask reveal, drag-linked tilt */
+/* 5 · Our photos — blurred depth backdrop, mask reveal, drag-linked tilt */
 export function Memories() {
   const [i, setI] = useState(0);
   const [dir, setDir] = useState(1);
@@ -73,7 +98,14 @@ export function Memories() {
   const rotate = useTransform(x, [-200, 200], [-6, 6]);
   const go = (d) => { setDir(d); setI((v) => (v + d + photos.length) % photos.length); };
   const p = photos[i];
-  useEffect(() => { [1, 2, -1].forEach((d) => { new Image().src = photos[(i + d + photos.length) % photos.length].src; }); }, [i]);
+
+  // preload neighbouring photos so swiping stays smooth
+  useEffect(() => {
+    [1, 2, -1].forEach((d) => {
+      new Image().src = photos[(i + d + photos.length) % photos.length].src;
+    });
+  }, [i]);
+
   return (
     <section className="page center" data-noswipe>
       <AnimatePresence>
@@ -94,7 +126,8 @@ export function Memories() {
             }}
             initial="enter" animate="center" exit="exit" transition={{ duration: 1, ease: [0.2, 0.7, 0.2, 1] }}>
             {bad[i] ? <div className="ph" /> : (
-              <motion.img src={p.src} alt={`Photo ${i + 1}`} draggable={false} style={{ objectPosition: p.pos }} onError={() => setBad((b) => ({ ...b, [i]: 1 }))}
+              <motion.img src={p.src} alt={`Photo ${i + 1}`} draggable={false} style={{ objectPosition: p.pos }}
+                onError={() => setBad((b) => ({ ...b, [i]: 1 }))}
                 initial={{ scale: 1.25 }} animate={{ scale: 1 }} transition={{ duration: 2, ease: "easeOut" }} />
             )}
           </motion.figure>
@@ -105,7 +138,7 @@ export function Memories() {
   );
 }
 
-/* 7 · Things I'm thankful for — one by one */
+/* Thankful — one by one (not on a route now, kept for later) */
 export function Thankful() {
   const [n, setN] = useState(1);
   useEffect(() => {
@@ -115,7 +148,7 @@ export function Thankful() {
   }, [n]);
   return (
     <section className="page center" onClick={() => setN((v) => Math.min(v + 1, thanks.length))}>
-      <span className="kicker">Chapter 06 · Things I'm thankful for</span>
+      <span className="kicker">Things I'm thankful for</span>
       <div className="stack">
         {thanks.slice(0, n).map((t, i) => (
           <motion.p key={t} className={`line ${i === n - 1 ? "" : "dim"}`}
@@ -127,7 +160,7 @@ export function Thankful() {
   );
 }
 
-/* 7 · The End */
+/* 7 · Final */
 export function Final() {
   return (
     <section className="page center final">
