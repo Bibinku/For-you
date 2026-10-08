@@ -27,7 +27,7 @@ export const opening = {
 
 export const chapters = {
   why: {
-    title: ["NJN NTHINA ITH CREATE", "CHEYUNATHNU ARIYUO❔"],
+    title: ["NJN NTHINA ITH CREATE", "CHEYUNATHNU ARIYUO?"],
     lines: [
       "YOU KNOW!",
       "EVERY YEAR, OCT 09 ENIK VENDI IYAL MATTI VEKKAR UND!",
