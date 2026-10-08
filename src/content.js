@@ -17,7 +17,7 @@ export const thanks = []; // (unused now)
 
 export const opening = {
   title: "HAI KUTTTTT 🫶",
-  lines: ["TODAY'S MY BIRTHDAY 🎉, BUT I WANNA CELEBRATE WITH YOU 🫶.", "THAT'S WHY I'M CREATING THIS SITE FOR YOU."],
+  lines: ["TODAY IS MY BIRTHDAY 🎉, BUT I WANNA CELEBRATE WITH YOU 🫶.", "THAT'S WHY I'M CREATING THIS SITE FOR YOU."],
 };
 
 export const chapters = {
