@@ -3,21 +3,16 @@ export const config = { me: "", her: "" };
 
 // 📸 Photos live in /public/photos. To add more: drop 27.jpg, 28.jpg ... in that folder and add a line below.
 // `pos` = focal point so faces stay in frame (x% y%). Order here = order on the page.
-// 1–12 = existing photos. New couple photos:
-//  13 = IMG_0536   14 = IMG_1310   15 = IMG_1316   16 = IMG_2403_2   17 = IMG_3077
-//  18 = IMG_3250   19 = IMG_5370   20 = IMG_5538_2 21 = IMG_5555_2   22 = IMG_5613
-//  23 = IMG_5619   24 = IMG_6037   25 = IMG_9283   26 = IMG_9839
+// 1–8 = older couple photos, 13–26 = newer couple photos (9–12 unused).
 const B = import.meta.env.BASE_URL;
 const list = [
-  [2, "50% 60%"], [3, "50% 35%"], [1, "50% 50%"], [8, "50% 50%"], [12, "50% 55%"], [9, "50% 55%"],
-  [10, "50% 60%"], [7, "50% 40%"], [6, "60% 55%"], [11, "50% 55%"], [4, "50% 50%"], [5, "50% 50%"],
-  [13, "50% 40%"], [15, "50% 40%"], [18, "50% 62%"], [20, "50% 58%"], [22, "50% 45%"], [19, "50% 40%"],
-  [21, "50% 45%"], [14, "50% 45%"], [16, "50% 60%"], [23, "50% 50%"], [17, "50% 55%"], [24, "50% 50%"],
-  [25, "50% 55%"], [26, "50% 50%"],
+  [1, "50% 65%"], [13, "50% 40%"], [2, "50% 45%"], [15, "50% 40%"], [3, "50% 45%"], [18, "50% 62%"],
+  [4, "50% 50%"], [20, "50% 58%"], [5, "50% 48%"], [22, "50% 45%"], [6, "50% 55%"], [19, "50% 40%"],
+  [7, "50% 45%"], [21, "50% 45%"], [8, "50% 40%"], [14, "50% 45%"], [16, "50% 60%"], [23, "50% 50%"],
+  [17, "50% 55%"],  [25, "50% 55%"], [26, "50% 50%"],
 ];
 export const photos = list.map(([n, pos]) => ({ src: `${B}photos/${n}.jpg`, pos }));
 export const video = { src: `${B}video/bg.mp4`, poster: `${B}video/poster.jpg` };
-
 export const thanks = []; // (unused now)
 
 export const opening = {
